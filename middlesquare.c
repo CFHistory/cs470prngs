@@ -41,99 +41,113 @@
  *
  * Parallel PRNG algorithms
  *
- * TODO Add timing functionality
  * TODO Make main method return an array
- * TODO Convert this to use longs?
  * TODO Add Weyl sequence
- * TODO Change string implementation to bit shifting
  */
 
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/time.h>
+
+//Timer structure taken from custom timing macros from lab 5
+struct timeval _tv;
+#define START_TIMER(X) gettimeofday(&_tv, NULL); \
+    double _timer_ ## X = _tv.tv_sec+(_tv.tv_usec/1000000.0);
+#define STOP_TIMER(X) gettimeofday(&_tv, NULL); \
+    _timer_ ## X = _tv.tv_sec+(_tv.tv_usec/1000000.0) - (_timer_ ## X);
+#define GET_TIMER(X) (_timer_ ## X)
+
 
 uint32_t seed = 0;     //public seed value
 int seedlen = 0;  //public length of the seed
 
 //comment out this to prevent debug output
-#define DEBUG
+//#define DEBUG
 
 /**
  *  Generate the next value in the random sequence and returns it.
  *  This returned value is also set as the seed.
  */
-int generatevalue(){
-	char squarestring[1048];
-	char temp[1048];
-	char middle[1048];
-	uint64_t square = seed * seed;
-        #ifdef DEBUG
-        printf("Seed is %u\nSquare is %lu\n", seed, square);
-        #endif
+uint32_t generatevalue(){
+    char squarestring[1048];
+    char temp[1048];
+    char middle[1048];
+    uint64_t square = seed * seed;
+    #ifdef DEBUG
+    printf("Seed is %u\nSquare is %lu\n", seed, square);
+    #endif
 
-        sprintf(squarestring, "%lu", square);
-        #ifdef DEBUG
-	printf("Squarestring is %s\n", squarestring);
-        #endif
+    sprintf(squarestring, "%lu", square);
+    #ifdef DEBUG
+    printf("Squarestring is %s\n", squarestring);
+    #endif
 
-	while( strlen(squarestring) < (seedlen * 2)){
-            strcpy(temp, squarestring);
-            sprintf(squarestring, "0%s", temp);
-        }
-        #ifdef DEBUG
-        printf("Squarestring is %s\n", squarestring);
-        #endif
+    while( strlen(squarestring) < (seedlen * 2)){
+        strcpy(temp, squarestring);
+        sprintf(squarestring, "0%s", temp);
+    }
+    #ifdef DEBUG
+    printf("Squarestring is %s\n", squarestring);
+    #endif
 	
-
-        strncpy(middle, squarestring + (seedlen / 2), seedlen);
-	uint32_t returnval = atoi(middle);
-	seed = returnval;
-        return returnval;
-
+    strncpy(middle, squarestring + (seedlen / 2), seedlen);
+    uint32_t returnval = atoi(middle);
+    seed = returnval;
+    return returnval;
 }
 
 int main(int argc, char* argv[]){
 
-	//Argument error checking
-	if(argc != 3)
-	{
-		printf("USAGE: middlesquare seed(int) iterations(int)");
-		exit(EXIT_FAILURE);
-	}
+    //Argument error checking
+    if(argc < 3)
+    {
+        printf("USAGE: middlesquare seed(int) iterations(int)");
+        exit(EXIT_FAILURE);
+    }
 
-	//Ensure the length of the seed is even
-	if( (strlen(argv[1]) % 2) != 0){
-		printf("ERROR: Length of seed must be even.\n");
-		exit(EXIT_FAILURE);
-	}
 
-	//Parse the command line
-        seed = atoi(argv[1]);
-        seedlen = strlen(argv[1]);
-        int iterations = atoi(argv[2]);
+    //Ensure the length of the seed is even
+    if( (strlen(argv[1]) % 2) != 0){
+        printf("ERROR: Length of seed must be even.\n");
+        exit(EXIT_FAILURE);
+    }
 
-	//Create a results array of a size equal to how many iterations
-	// have been requested
-	uint32_t* results = malloc(sizeof(uint32_t) * iterations);
+    //Parse the command line
+    seed = atoi(argv[1]);
+    seedlen = strlen(argv[1]);
+    int iterations = atoi(argv[2]);
+    uint32_t* results;
 
-	//Generate values and print as we go
-        for(int i = 0; i < iterations; i++){
-            results[i] = generatevalue();
-            #ifdef DEBUG
-	    printf("Value is %u\n", results[i]);
-	    #endif
-	}
+    //Create a results array of a size equal to how many iterations
+    // have been requested
+    
+    results = malloc(sizeof(uint32_t) * iterations);
+    START_TIMER(genvals);
+    //Generate values and print as we go
+    for(int i = 0; i < iterations; i++){
+        results[i] = generatevalue();
+        #ifdef DEBUG
+        printf("Value is %u\n", results[i]);
+	#endif
+    }
+    STOP_TIMER(genvals);
+    //Report final answer as a string 
+    printf("Final results: [ ");
+    for(int i = 0; i < iterations; i++){
+        printf("%u ", results[i]);
+    }
+    printf("]\n");
 
-	//Report final answer as a string 
-	printf("Final results: [ ");
-	for(int i = 0; i < iterations; i++){
+    printf("Time taken: %.6f\n", GET_TIMER(genvals));
+ 
+    //Free memory and exit
+    free(results);
 
-		printf("%i ", results[i]);
+    return 0;
 
-	}
-        printf("]\n");
-
-	//Cleanup and exit
-	free(results);
+    
+   
+    
 }
