@@ -1,7 +1,7 @@
 /**
  * Serial Version of Middle Square Method
  *
- * --History--
+ *
  *
  * --How it Works--
  *  The Middle Square Method generates pseudorandom numbers through the
@@ -65,6 +65,9 @@ int seedlen = 0;  //public length of the seed
 
 //comment out this to prevent debug output
 //#define DEBUG
+
+//comment this out to prevent results output
+//#define RESULTSOUT
 
 /**
  *  Generate the next value in the random sequence and returns it.
@@ -134,12 +137,13 @@ int main(int argc, char* argv[]){
     }
     STOP_TIMER(genvals);
     //Report final answer as a string 
+    #ifdef RESULTSOUT
     printf("Final results: [ ");
     for(int i = 0; i < iterations; i++){
         printf("%u ", results[i]);
     }
     printf("]\n");
-
+    #endif
     printf("Time taken: %.6f\n", GET_TIMER(genvals));
  
     //Free memory and exit
