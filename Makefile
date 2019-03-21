@@ -3,10 +3,10 @@ TARGETS=middlesquare_ser middlesquare_par
 all: $(TARGETS)
 
 middlesquare_ser: 
-	gcc -o middlesquare_ser middlesquare_ser.c
+	gcc -std=c99 -o middlesquare_ser middlesquare_ser.c
 
 middlesquare_par:
-	gcc -fopenmp -o middlesquare_par middlesquare_par.c
+	gcc -fopenmp -std=c99 -o middlesquare_par middlesquare_par.c
   
 clean: 
 	rm -f middlesquare_ser
