@@ -2,8 +2,18 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/time.h>
 #include "threefry.h"
+
+# include <sys/time.h>
+  struct timeval _tv;
+#define START_TIMER(X) gettimeofday(&_tv, NULL); \
+    double _timer_ ## X = _tv.tv_sec+(_tv.tv_usec/1000000.0);
+#define STOP_TIMER(X) gettimeofday(&_tv, NULL); \
+    _timer_ ## X = _tv.tv_sec+(_tv.tv_usec/1000000.0) - (_timer_ ## X);
+#define GET_TIMER(X) (_timer_ ## X)
+
+//Uncomment this line for raw output
+//#define DEBUG
 
 /**
  *  Serial version of the Threefry Method
@@ -28,6 +38,8 @@ int main(int argc, char* argv[]) {
     long seed;
     long count;    
 
+    threefry2x64_ctr_t* results;
+
     if(argc < 3){
         /**
           *  Usage: ./threefry_ser unsigned long seed, unsigned long count
@@ -39,13 +51,31 @@ int main(int argc, char* argv[]) {
     seed = atol(argv[1]);
     count = atol(argv[2]);
 
+    results = malloc(sizeof(threefry2x64_ctr_t) * count);
+
     threefry2x64_key_t key = {{seed,0}};
     threefry2x64_ctr_t ctr = {{0,0}};
 
+    START_TIMER(genvals);
     for(int i = 0; i < count; i++){
-        printf("Result: %lu\n", threefry2x64(ctr, key));
+    
+        results[i] = threefry2x64(ctr, key);
         ctr.v[0]++;
     }
-    
+    STOP_TIMER(genvals);
+
+    #ifdef DEBUG
+    printf("Final Results: [");
+    for(int j = 0; j < count; j++){
+        printf(" %lu ",results[j]); 
+    }
+    printf("]\n");
+    #endif
+
+    printf("Time taken: %.6f\n", GET_TIMER(genvals));
+
+    free(results);
+
+    return 0;
 
 }
