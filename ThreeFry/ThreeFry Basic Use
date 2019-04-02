@@ -1,0 +1,6 @@
+For using threefry:
+
+set threefry2x64_key_t key = {{0,0}}
+set threefry2x64_ctr_t ctr = {{0,0}}
+
+set someNum = threefry2x64(ctr, key)
