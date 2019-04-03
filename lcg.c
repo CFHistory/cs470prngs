@@ -27,12 +27,16 @@ inline int rand()
  
 #endif/* MS_RAND */
  
-int main() {
+int main(int argc, char* argv[]) {
     int i;
-    printf("rand max is %d\n", RAND_MAX);
- 
-    for (i = 0; i < 10; i++)
-        printf("%d\n", rand());
- 
+//    printf("rand max is %d\n", RAND_MAX);
+
+    FILE* output = fopen("out_lcg.txt", "w");
+
+    for (i = 0; i < 100000; i++) {
+        fprintf(output, "%d\n", rand());
+    }
+
+    fclose(output);
     return 0;
 }

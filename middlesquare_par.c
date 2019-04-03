@@ -83,7 +83,7 @@ int seedlen = 0;  //public length of the seed
 //#define DEBUG
 
 //comment this out to prevent array output
-//#define RESULTSOUT
+#define RESULTSOUT
 
 /**
  *  Generate the next value in the random sequence and returns it.
@@ -166,11 +166,14 @@ int main(int argc, char* argv[]){
 
     #ifdef RESULTSOUT    
     //Report final answer as a string 
+    FILE* output = fopen("out_mid_par.txt", "w");
     printf("Final results: [ ");
     for(int i = 0; i < iterations; i++){
         printf("%u ", results[i]);
+        fprintf(output, "%u\n", results[i]);
     }
     printf("]\n");
+    fclose(output);
     #endif
     printf("Time taken: %.6f\n", GET_TIMER(genvals));
  

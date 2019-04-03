@@ -13,7 +13,7 @@
 #define GET_TIMER(X) (_timer_ ## X)
 
 //Uncomment this line for raw output
-//#define DEBUG
+#define DEBUG
 
 /**
  *  Serial version of the Threefry Method
@@ -65,11 +65,14 @@ int main(int argc, char* argv[]) {
     STOP_TIMER(genvals);
 
     #ifdef DEBUG
+    FILE* output = fopen("out_fry_ser.txt", "w");
     printf("Final Results: [");
     for(int j = 0; j < count; j++){
         printf(" %lu ",results[j]); 
+        fprintf(output, "%lu\n", results[j]);
     }
     printf("]\n");
+    fclose(output);
     #endif
 
     printf("Time taken: %.6f\n", GET_TIMER(genvals));
