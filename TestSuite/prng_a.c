@@ -10,6 +10,7 @@
 #include <stdlib.h>
 //Define the maximum number of values in the randomdata.values array
 #define MAXVALS 50
+//#define DEBUG
 
 //Enum that defines what prng algorithm was used to generate these values
 enum algorithm{MiddleSquare, LCG, ThreeFry};
@@ -83,7 +84,6 @@ void* spread(randomdata data, analysis* results){
     results->min = min;
     results->max = max;
     results->std_deviation = sqrt(std_deviation/data.numvals);
-    printf("Done!\n");
 }
 
 
@@ -96,9 +96,10 @@ void repeats(randomdata data){
 
 int main(int argc, char* argv[]){
     //for now, create a randomdata struct manually and send to spread and send to the functions
-	
-    randomdata data;
+    
     randomdata testdata;
+    #ifdef DEBUG
+    randomdata data;
 
     data.alg = LCG;
     data.time = 4.555;
@@ -118,7 +119,8 @@ int main(int argc, char* argv[]){
     printf("Values of this array: %s\n", arrayvals);
     printf("Standard Deviation of the test struct is %f\n", data_a.std_deviation);
     //in the future, parse in data and send it out to these functions to get values back
-    
+    #endif    
+
     if(argc < 2){
         printf("ERROR: Please provide an infile.\n");
         exit(EXIT_FAILURE);
@@ -140,8 +142,17 @@ int main(int argc, char* argv[]){
 
     values_tostring(testdata, newvals);
     spread(testdata, &testdata_a);
+    #ifdef DEBUG
     printf("Values of this array: %s\n", newvals);
-    printf("Standard deviation of data: %f\n", testdata_a.std_deviation);
+    #endif
+    printf("STANDARD DEVIATION: %.3f\n", testdata_a.std_deviation);
+    float range = (testdata_a.max - testdata_a.min);
+    printf("RANGE: %.3f\n", range);
+    printf("MEAN: %.3f\n", testdata_a.mean);
+    printf("~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("Standard Deviation is %.2f percent of range\n", ((testdata_a.std_deviation/range) * 100));
+    printf("The minimum value is %.2f standard deviations away from the mean\n", ((testdata_a.mean - testdata_a.min)/testdata_a.std_deviation));
+    printf("The maximum value is %.2f standard deviations away from the mean\n", ((testdata_a.max - testdata_a.mean)/testdata_a.std_deviation));
 
 
 }
