@@ -27,19 +27,20 @@ The minimum value is 1.91 standard deviations away from the mean
 The maximum value is 1.86 standard deviations away from the mean
 
 threefry_ser
-STANDARD DEVIATION: inf
+STANDARD DEVIATION: 5239718264120016896.000
 RANGE: 17709063030936961024.000
 MEAN: 11860988281703366656.000
-~~~~~~~~~~~~~~~~~~~~~
-Standard Deviation is inf percent of range
-The minimum value is 0.00 standard deviations away from the mean
-The maximum value is 0.00 standard deviations away from the mean
+~~~~~~~~~~~~~~~~~~~~
+Standard Deviation is 29.59 percent of range
+The minimum value is 2.12 standard deviations away from the mean
+The maximum value is 1.25 standard deviations away from the mean
 
 threefry_par
-STANDARD DEVIATION: inf
-RANGE: 18435850112501547008.000
-MEAN: 11721587799487414272.000
-~~~~~~~~~~~~~~~~~~~~~
-Standard Deviation is inf percent of range
-The minimum value is 0.00 standard deviations away from the mean
-The maximum value is 0.00 standard deviations away from the mean
+STANDARD DEVIATION: 5148245493758820352.000
+RANGE: 17198537791928008704.000
+MEAN: 9883638664938913792.000
+~~~~~~~~~~~~~~~~~~~~
+Standard Deviation is 29.93 percent of range
+The minimum value is 1.82 standard deviations away from the mean
+The maximum value is 1.53 standard deviations away from the mean
+
