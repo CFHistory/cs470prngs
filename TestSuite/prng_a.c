@@ -75,15 +75,14 @@ void* spread(randomdata data, analysis* results){
     }
     mean = sum/data.numvals;
 
-    for(int j = 0; j < data.numvals; j++){
-        std_deviation += pow(data.values[j] - mean, 2);
- 
+    for(int j = 0; j < data.numvals; j++) {
+        std_deviation += (pow(data.values[j] - mean, 2)/data.numvals);
     }
     results->sum = sum;
     results->mean = mean;
     results->min = min;
     results->max = max;
-    results->std_deviation = sqrt(std_deviation/data.numvals);
+    results->std_deviation = sqrt(std_deviation);
 }
 
 
@@ -126,14 +125,15 @@ int main(int argc, char* argv[]){
         exit(EXIT_FAILURE);
     }
 
-    char buffer[100];
+    unsigned long buffer = 0;
     FILE* datafile = fopen(argv[1], "r");
     
     //Hard code certain things for now
     testdata.alg = LCG;
     testdata.numvals = 0;
-    while((fscanf(datafile, "%s", buffer) > 0) && testdata.numvals < MAXVALS){
-        testdata.values[testdata.numvals] = atof(buffer);
+    while((fscanf(datafile, "%lu", &buffer) > 0) && testdata.numvals < MAXVALS){
+        float tempVal = (float) buffer;
+        testdata.values[testdata.numvals] = tempVal;
         testdata.numvals++;
     }
     fclose(datafile);
@@ -150,7 +150,8 @@ int main(int argc, char* argv[]){
     printf("RANGE: %.3f\n", range);
     printf("MEAN: %.3f\n", testdata_a.mean);
     printf("~~~~~~~~~~~~~~~~~~~~~\n");
-    printf("Standard Deviation is %.2f percent of range\n", ((testdata_a.std_deviation/range) * 100));
+    float tempSD = ((testdata_a.std_deviation)/range) * 100;
+    printf("Standard Deviation is %.2f percent of range\n", tempSD);
     printf("The minimum value is %.2f standard deviations away from the mean\n", ((testdata_a.mean - testdata_a.min)/testdata_a.std_deviation));
     printf("The maximum value is %.2f standard deviations away from the mean\n", ((testdata_a.max - testdata_a.mean)/testdata_a.std_deviation));
 
