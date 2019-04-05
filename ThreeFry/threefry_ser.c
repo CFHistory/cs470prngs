@@ -13,7 +13,10 @@
 #define GET_TIMER(X) (_timer_ ## X)
 
 //Uncomment this line for raw output
-#define DEBUG
+//#define DEBUG
+
+//Uncomment this line for output to a file
+#define CATOUT
 
 /**
  *  Serial version of the Threefry Method
@@ -75,8 +78,13 @@ int main(int argc, char* argv[]) {
     fclose(output);
     #endif
 
+    #ifdef CATOUT
+    for(int k = 0; k < count; k++){
+        printf("%lu\n", results[k]);
+    }
+    #else
     printf("Time taken: %.6f\n", GET_TIMER(genvals));
-
+    #endif
     free(results);
 
     return 0;

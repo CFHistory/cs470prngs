@@ -83,7 +83,10 @@ int seedlen = 0;  //public length of the seed
 //#define DEBUG
 
 //comment this out to prevent array output
-#define RESULTSOUT
+//#define RESULTSOUT
+
+//Uncomment this to make use of concatenation
+#define CATOUT
 
 /**
  *  Generate the next value in the random sequence and returns it.
@@ -175,8 +178,14 @@ int main(int argc, char* argv[]){
     printf("]\n");
     fclose(output);
     #endif
+
+    #ifdef CATOUT 
+    for(int j = 0; j < iterations; j++){
+        printf("%u\n", results[j]);
+    }
+    #else
     printf("Time taken: %.6f\n", GET_TIMER(genvals));
- 
+    #endif
     //Free memory and exit
     free(results);
 

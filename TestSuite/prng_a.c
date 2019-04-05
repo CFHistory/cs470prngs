@@ -41,8 +41,8 @@ typedef struct {
 
 void* values_tostring(randomdata data, char* returnto){
     
-    char retval[50000] = "[ ";
-    char temp[50000] = "";
+    char retval[500000] = "[ ";
+    char temp[500000] = "";
     for(int i = 0; i < data.numvals; i++){ 
         sprintf(temp, "%.3f ", data.values[i]);
         strcat(retval, temp);

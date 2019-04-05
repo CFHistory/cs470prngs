@@ -1,0 +1,45 @@
+middlesquare ser
+STANDARD DEVIATION: 291683.750
+RANGE: 937147.000
+MEAN: 474811.875
+~~~~~~~~~~~~~~~~~~~~~
+Standard Deviation is 31.12 percent of range
+The minimum value is 1.46 standard deviations away from the mean
+The maximum value is 1.75 standard deviations away from the mean
+
+
+middlesquare par
+STANDARD DEVIATION: 286174.594
+RANGE: 885257.000
+MEAN: 467646.469
+~~~~~~~~~~~~~~~~~~~~~
+Standard Deviation is 32.33 percent of range
+The minimum value is 1.49 standard deviations away from the mean
+The maximum value is 1.60 standard deviations away from the mean
+
+lcg
+STANDARD DEVIATION: 553818368.000
+RANGE: 2087581440.000
+MEAN: 1092120960.000
+~~~~~~~~~~~~~~~~~~~~~
+Standard Deviation is 26.53 percent of range
+The minimum value is 1.91 standard deviations away from the mean
+The maximum value is 1.86 standard deviations away from the mean
+
+threefry_ser
+STANDARD DEVIATION: inf
+RANGE: 17709063030936961024.000
+MEAN: 11860988281703366656.000
+~~~~~~~~~~~~~~~~~~~~~
+Standard Deviation is inf percent of range
+The minimum value is 0.00 standard deviations away from the mean
+The maximum value is 0.00 standard deviations away from the mean
+
+threefry_par
+STANDARD DEVIATION: inf
+RANGE: 18435850112501547008.000
+MEAN: 11721587799487414272.000
+~~~~~~~~~~~~~~~~~~~~~
+Standard Deviation is inf percent of range
+The minimum value is 0.00 standard deviations away from the mean
+The maximum value is 0.00 standard deviations away from the mean
