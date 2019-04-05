@@ -85,21 +85,20 @@ int main(int argc, char* argv[]) {
     STOP_TIMER(genvals);
 
     #ifdef DEBUG
-    FILE* output = fopen("out_fry_par.txt", "w");
     printf("Final Results: [");
     for(int j = 0; j < count; j++){
         printf(" %lu ",results[j]);
-        fprintf(output, "%lu\n", results[j]); 
     }
     printf("]\n");
-    fclose(output);
     #endif
 
     
     #ifdef CATOUT
+    FILE* output = fopen("out_fry_par.txt", "w");
     for(int k = 0; k < count; k++){
-        printf("%lu\n", results[k]);
+        fprintf(output, "%lu\n", results[k]);
     }
+    fclose(output);
     #else 
     printf("Time taken: %.6f\n", GET_TIMER(genvals));
     #endif
