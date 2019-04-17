@@ -55,6 +55,20 @@ void* report_analysis(randomdata data){
     
 }
 
+void* chisquared(randomdata data, analysis* results){
+    //perform the chi squared test in here
+    //define constant p = 0.05 (could be lower)
+    //
+    // divide the range of data by 10 (could go for smaller buckets)
+    // count the number of values in each bucket
+    // determine how many 'should' be in each bucket (total/# buckets)
+    // subtract expected from actual, square it, divide by expected
+    // add up the resulting values
+    //
+    // p value needs to be looked up on a table, unfortunately
+    // so, do we calcluate p value?
+}
+
 //standard deviation function 
 void* spread(randomdata data, analysis* results){
     float sum = 0.0;
