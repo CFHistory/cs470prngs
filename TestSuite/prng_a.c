@@ -10,6 +10,8 @@
 #include <stdlib.h>
 //Define the maximum number of values in the randomdata.values array
 #define MAXVALS 50
+//Define the number of buckets for the chisquared
+#define BUCKETCT 10
 //#define DEBUG
 
 //Enum that defines what prng algorithm was used to generate these values
@@ -55,7 +57,7 @@ void* report_analysis(randomdata data){
     
 }
 
-void* chisquared(randomdata data, analysis* results){
+void chisquared(randomdata data, analysis results){
     //perform the chi squared test in here
     //define constant p = 0.05 (could be lower)
     //
@@ -67,6 +69,41 @@ void* chisquared(randomdata data, analysis* results){
     //
     // p value needs to be looked up on a table, unfortunately
     // so, do we calcluate p value?
+
+    //check for results to have been defined
+
+    //define data structure of buckets- each of the
+    int buckets[BUCKETCT];
+    double chiscore[BUCKETCT];
+    double chisum = 0.0;
+    for(int j = 0; j < BUCKETCT; j++){
+        buckets[j] = 0;
+    }    
+
+    double range = (results.max - results.min);
+    double bucketsize = range/BUCKETCT;
+    double desiredspread = (data.numvals/BUCKETCT);
+    for(int i = 0; i < data.numvals; i++){
+        buckets[(int)((data.values[i] - results.min)/bucketsize)] += 1; 
+    }
+
+
+    for(int k = 0; k < BUCKETCT; k++){
+        printf("Bucket %i (%.2f to %.2f): %d\n", k, (results.min + (bucketsize * k)), (results.min + (bucketsize * (k + 1))), buckets[k]);
+        //subtract expected from actual
+        chiscore[k] = buckets[k] - desiredspread;
+        //square it
+        chiscore[k] *= chiscore[k];
+        //divide by expected
+        chiscore[k] = chiscore[k]/desiredspread;
+        //add up results         
+        chisum += chiscore[k];
+    }
+    
+    for( int c = 0; c < BUCKETCT; c++){
+        printf("Bucket %i chi: %.2f\n", c, chiscore[c]);
+    }    
+    printf("Chiscore overall is %.3f\n", chisum);
 }
 
 //standard deviation function 
@@ -164,6 +201,7 @@ int main(int argc, char* argv[]){
     printf("RANGE: %.3f\n", range);
     printf("MEAN: %.3f\n", testdata_a.mean);
     printf("~~~~~~~~~~~~~~~~~~~~~\n");
+    chisquared(testdata, testdata_a);
     float tempSD = ((testdata_a.std_deviation)/range) * 100;
     printf("Standard Deviation is %.2f percent of range\n", tempSD);
     printf("The minimum value is %.2f standard deviations away from the mean\n", ((testdata_a.mean - testdata_a.min)/testdata_a.std_deviation));
