@@ -10,6 +10,6 @@
     /*function declarations*/
     
     int compare( const void* a, const void* b);
-    void reps(long arr[], long size);
+    void reps(double arr[], double size);
  
 #endif

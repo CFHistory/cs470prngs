@@ -8,6 +8,7 @@
 #include <string.h>
 #include <math.h>
 #include <stdlib.h>
+#include "repetition.h"
 //Define the maximum number of values in the randomdata.values array
 #define MAXVALS 5000
 //Define the number of buckets for the chisquared
@@ -193,6 +194,10 @@ int main(int argc, char* argv[]){
 
     values_tostring(testdata, newvals);
     spread(testdata, &testdata_a);
+    
+    printf("\n");
+    reps(testdata.values, testdata.numvals);
+    printf("\n");
     #ifdef DEBUG
     printf("Values of this array: %s\n", newvals);
     #endif
