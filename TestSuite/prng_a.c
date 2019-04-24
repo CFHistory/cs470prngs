@@ -9,7 +9,7 @@
 #include <math.h>
 #include <stdlib.h>
 //Define the maximum number of values in the randomdata.values array
-#define MAXVALS 50
+#define MAXVALS 5000
 //Define the number of buckets for the chisquared
 #define BUCKETCT 10
 //#define DEBUG
