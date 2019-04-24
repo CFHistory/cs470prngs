@@ -83,10 +83,10 @@ int seedlen = 0;  //public length of the seed
 //#define DEBUG
 
 //comment this out to prevent array output
-//#define RESULTSOUT
+#define RESULTSOUT
 
 //Uncomment this to make use of concatenation
-#define CATOUT
+//#define CATOUT
 
 /**
  *  Generate the next value in the random sequence and returns it.
