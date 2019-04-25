@@ -66,7 +66,7 @@ int main(int argc, char* argv[]) {
     }
 
     STOP_TIMER(genvals);
-
+    
     for (i = 0; i < size; i++) {
         #ifdef CATOUT
         printf("%d\n", vals[i]);
