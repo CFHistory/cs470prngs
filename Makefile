@@ -1,4 +1,4 @@
-TARGETS=middlesquare_ser middlesquare_par lcg_ser lcg_par monteStock
+TARGETS=middlesquare_ser middlesquare_par lcg_ser lcg_par monteStock darts
 
 all: $(TARGETS)
 
@@ -16,6 +16,9 @@ lcg_par:
 
 monteStock:
 	gcc -std=c99 -o monteStock monteCarloStock.c -lm
+
+darts:
+	gcc -std=c99 -o darts monteDarts.c -lm
 
 clean: 
 	rm -f middlesquare_ser

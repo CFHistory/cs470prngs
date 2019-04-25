@@ -11,7 +11,7 @@
 long total_darts = 0;           // dart count
 long darts_in_circle = 0;       // number of hits
 
-void throw_darts(long total_darts, long alg)
+void throw_darts(long total_darts, long alg, char* fileName)
 {
     unsigned long seed = 0;
     unsigned long hits = 0; 
@@ -23,17 +23,17 @@ void throw_darts(long total_darts, long alg)
 
     switch(alg) {
         case 1:
-            input = fopen("out_lcg.txt", "r");
+            input = fopen(fileName, "r");
             output = fopen("darts_lcg.txt", "w");
             break;
         case 2:
-            input = fopen("out_mid_par.txt", "r");
+            input = fopen(fileName, "r");
             output = fopen("darts_mid.txt", "w");
             mod =    10000;
             divisor = 9999;
             break;
         case 3:
-            input = fopen("ThreeFry/out_fry_par.txt", "r");
+            input = fopen(fileName, "r");
             output = fopen("darts_fry.txt", "w");
             mod =    10000000000000;
             divisor = 9999999999999;
@@ -84,21 +84,15 @@ void throw_darts(long total_darts, long alg)
 int main(int argc, char* argv[])
 {
     // check and parse command-line arguments
-    if (argc != 3) {
-        printf("Usage: %s <num-darts> <PRNG-algorithm>\n", argv[0]);
+    if (argc != 4) {
+        printf("Usage: %s <num-darts> <PRNG-algorithm> <random-values-file>\n", argv[0]);
         exit(EXIT_FAILURE);
     }
     total_darts = strtoll(argv[1], NULL, 10);
     long alg = strtol(argv[2], NULL, 10);
 
     // simulate dart throws
-    if(alg == 4) {
-        throw_darts(total_darts, 1);
-        throw_darts(total_darts, 2);
-        throw_darts(total_darts, 3);
-    } else {
-        throw_darts(total_darts, alg);
-    }
+    throw_darts(total_darts, alg, argv[3]);
 
     return EXIT_SUCCESS;
 }
