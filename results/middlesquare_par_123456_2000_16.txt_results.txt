@@ -1,0 +1,35 @@
+
+Before declarations
+After memcpy
+After qsort
+Number of repitions in size of 2000.000000 is 42.000000
+The most repeated number was repeated 42.000000 times
+
+STANDARD DEVIATION: 291842.438
+RANGE: 998224.000
+MEAN: 440898.438
+~~~~~~~~~~~~~~~~~~~~~
+Bucket 0 (0.00 to 99822.40): 291
+Bucket 1 (99822.40 to 199644.80): 233
+Bucket 2 (199644.80 to 299467.20): 249
+Bucket 3 (299467.20 to 399289.60): 208
+Bucket 4 (399289.60 to 499112.00): 189
+Bucket 5 (499112.00 to 598934.40): 176
+Bucket 6 (598934.40 to 698756.80): 170
+Bucket 7 (698756.80 to 798579.20): 173
+Bucket 8 (798579.20 to 898401.60): 154
+Bucket 9 (898401.60 to 998224.00): 156
+Bucket 0 chi: 41.41
+Bucket 1 chi: 5.45
+Bucket 2 chi: 12.01
+Bucket 3 chi: 0.32
+Bucket 4 chi: 0.60
+Bucket 5 chi: 2.88
+Bucket 6 chi: 4.50
+Bucket 7 chi: 3.65
+Bucket 8 chi: 10.58
+Bucket 9 chi: 9.68
+Chiscore overall is 91.065
+Standard Deviation is 29.24 percent of range
+The minimum value is 1.51 standard deviations away from the mean
+The maximum value is 1.91 standard deviations away from the mean
