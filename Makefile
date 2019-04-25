@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 TARGETS=middlesquare_ser middlesquare_par lcg_ser lcg_par monteStock darts
+=======
+TARGETS=middlesquare_ser middlesquare_par lcg monteStock
+>>>>>>> 85566e4d40cacc91fd85016fc88b286d96b9aad6
 
 all: $(TARGETS)
 
@@ -16,9 +20,6 @@ lcg_par:
 
 monteStock:
 	gcc -std=c99 -o monteStock monteCarloStock.c -lm
-
-darts:
-	gcc -std=c99 -o darts dartsLab.c
 
 clean: 
 	rm -f middlesquare_ser
