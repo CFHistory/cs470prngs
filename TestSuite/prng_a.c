@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include "repetition.h"
 //Define the maximum number of values in the randomdata.values array
-#define MAXVALS 5000
+#define MAXVALS 55000
 //Define the number of buckets for the chisquared
 #define BUCKETCT 10
 //#define DEBUG
@@ -134,6 +134,7 @@ void* spread(randomdata data, analysis* results){
     results->mean = mean;
     results->min = min;
     results->max = max;
+
     results->std_deviation = sqrt(std_deviation);
 }
 
@@ -196,7 +197,7 @@ int main(int argc, char* argv[]){
     spread(testdata, &testdata_a);
     
     printf("\n");
-    reps(testdata.values, testdata.numvals);
+    reps(testdata.values,(double) testdata.numvals);
     printf("\n");
     #ifdef DEBUG
     printf("Values of this array: %s\n", newvals);
