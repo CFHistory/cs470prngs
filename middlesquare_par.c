@@ -82,11 +82,10 @@ int seedlen = 0;  //public length of the seed
 //comment out this to prevent debug output
 //#define DEBUG
 
-//comment this out to prevent array output
-#define RESULTSOUT
 
 //Uncomment this to make use of concatenation
-//#define CATOUT
+//CATOUT simply prints the values to stdout with no additional information. 
+#define CATOUT
 
 /**
  *  Generate the next value in the random sequence and returns it.
@@ -166,18 +165,6 @@ int main(int argc, char* argv[]){
         }
     }
     STOP_TIMER(genvals);
-
-    #ifdef RESULTSOUT    
-    //Report final answer as a string 
-    FILE* output = fopen("out_mid_par.txt", "w");
-    printf("Final results: [ ");
-    for(int i = 0; i < iterations; i++){
-        printf("%u ", results[i]);
-        fprintf(output, "%u\n", results[i]);
-    }
-    printf("]\n");
-    fclose(output);
-    #endif
 
     #ifdef CATOUT 
     for(int j = 0; j < iterations; j++){
