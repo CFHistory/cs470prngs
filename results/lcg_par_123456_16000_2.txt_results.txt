@@ -2,34 +2,34 @@
 Before declarations
 After memcpy
 After qsort
-Number of repitions in size of 16000.000000 is 8069.000000
-The most repeated number was repeated 8003.000000 times
+Number of repitions in size of 16000.000000 is 6519.000000
+The most repeated number was repeated 8.000000 times
 
-STANDARD DEVIATION: 689168000.000
-RANGE: 2147411328.000
-MEAN: 533382528.000
+STANDARD DEVIATION: 617498176.000
+RANGE: 2147130240.000
+MEAN: 1071068928.000
 ~~~~~~~~~~~~~~~~~~~~~
-Bucket 0 (0.00 to 214741132.80): 8817
-Bucket 1 (214741132.80 to 429482265.60): 773
-Bucket 2 (429482265.60 to 644223398.40): 835
-Bucket 3 (644223398.40 to 858964531.20): 822
-Bucket 4 (858964531.20 to 1073705664.00): 784
-Bucket 5 (1073705664.00 to 1288446796.80): 808
-Bucket 6 (1288446796.80 to 1503187929.60): 798
-Bucket 7 (1503187929.60 to 1717929062.40): 805
-Bucket 8 (1717929062.40 to 1932670195.20): 790
-Bucket 9 (1932670195.20 to 2147411328.00): 767
-Bucket 0 chi: 32553.18
-Bucket 1 chi: 427.46
-Bucket 2 chi: 365.77
-Bucket 3 chi: 378.30
-Bucket 4 chi: 416.16
-Bucket 5 chi: 392.04
-Bucket 6 chi: 402.00
-Bucket 7 chi: 395.02
-Bucket 8 chi: 410.06
-Bucket 9 chi: 433.68
-Chiscore overall is 36173.666
-Standard Deviation is 32.09 percent of range
-The minimum value is 0.77 standard deviations away from the mean
-The maximum value is 2.34 standard deviations away from the mean
+Bucket 0 (281057.00 to 214994084.10): 1625
+Bucket 1 (214994084.10 to 429707111.20): 1528
+Bucket 2 (429707111.20 to 644420138.30): 1666
+Bucket 3 (644420138.30 to 859133165.40): 1624
+Bucket 4 (859133165.40 to 1073846192.50): 1545
+Bucket 5 (1073846192.50 to 1288559219.60): 1656
+Bucket 6 (1288559219.60 to 1503272246.70): 1622
+Bucket 7 (1503272246.70 to 1717985273.80): 1573
+Bucket 8 (1717985273.80 to 1932698300.90): 1616
+Bucket 9 (1932698300.90 to 2147411328.00): 1541
+Bucket 0 chi: 0.39
+Bucket 1 chi: 3.24
+Bucket 2 chi: 2.72
+Bucket 3 chi: 0.36
+Bucket 4 chi: 1.89
+Bucket 5 chi: 1.96
+Bucket 6 chi: 0.30
+Bucket 7 chi: 0.46
+Bucket 8 chi: 0.16
+Bucket 9 chi: 2.18
+Chiscore overall is 13.658
+Standard Deviation is 28.76 percent of range
+The minimum value is 1.73 standard deviations away from the mean
+The maximum value is 1.74 standard deviations away from the mean

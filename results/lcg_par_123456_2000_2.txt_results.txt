@@ -2,34 +2,34 @@
 Before declarations
 After memcpy
 After qsort
-Number of repitions in size of 2000.000000 is 887.000000
-The most repeated number was repeated 649.000000 times
+Number of repitions in size of 2000.000000 is 1000.000000
+The most repeated number was repeated 3.000000 times
 
-STANDARD DEVIATION: 2989946774510108672.000
-RANGE: 18446744073709551616.000
-MEAN: 498062102909419520.000
+STANDARD DEVIATION: 627751360.000
+RANGE: 2142344064.000
+MEAN: 1044481216.000
 ~~~~~~~~~~~~~~~~~~~~~
-Bucket 0 (0.00 to 1844674407370955264.00): 1946
-Bucket 1 (1844674407370955264.00 to 3689348814741910528.00): 0
-Bucket 2 (3689348814741910528.00 to 5534023222112866304.00): 0
-Bucket 3 (5534023222112866304.00 to 7378697629483821056.00): 0
-Bucket 4 (7378697629483821056.00 to 9223372036854775808.00): 0
-Bucket 5 (9223372036854775808.00 to 11068046444225732608.00): 0
-Bucket 6 (11068046444225732608.00 to 12912720851596687360.00): 0
-Bucket 7 (12912720851596687360.00 to 14757395258967642112.00): 0
-Bucket 8 (14757395258967642112.00 to 16602069666338596864.00): 0
-Bucket 9 (16602069666338596864.00 to 18446744073709551616.00): 0
-Bucket 0 chi: 15242.58
-Bucket 1 chi: 200.00
-Bucket 2 chi: 200.00
-Bucket 3 chi: 200.00
-Bucket 4 chi: 200.00
-Bucket 5 chi: 200.00
-Bucket 6 chi: 200.00
-Bucket 7 chi: 200.00
-Bucket 8 chi: 200.00
-Bucket 9 chi: 200.00
-Chiscore overall is 17042.580
-Standard Deviation is 16.21 percent of range
-The minimum value is 0.17 standard deviations away from the mean
-The maximum value is 6.00 standard deviations away from the mean
+Bucket 0 (1311900.00 to 215546303.60): 250
+Bucket 1 (215546303.60 to 429780707.20): 174
+Bucket 2 (429780707.20 to 644015110.80): 208
+Bucket 3 (644015110.80 to 858249514.40): 200
+Bucket 4 (858249514.40 to 1072483918.00): 201
+Bucket 5 (1072483918.00 to 1286718321.60): 180
+Bucket 6 (1286718321.60 to 1500952725.20): 188
+Bucket 7 (1500952725.20 to 1715187128.80): 226
+Bucket 8 (1715187128.80 to 1929421532.40): 182
+Bucket 9 (1929421532.40 to 2143655936.00): 190
+Bucket 0 chi: 12.50
+Bucket 1 chi: 3.38
+Bucket 2 chi: 0.32
+Bucket 3 chi: 0.00
+Bucket 4 chi: 0.01
+Bucket 5 chi: 2.00
+Bucket 6 chi: 0.72
+Bucket 7 chi: 3.38
+Bucket 8 chi: 1.62
+Bucket 9 chi: 0.50
+Chiscore overall is 24.425
+Standard Deviation is 29.30 percent of range
+The minimum value is 1.66 standard deviations away from the mean
+The maximum value is 1.75 standard deviations away from the mean
