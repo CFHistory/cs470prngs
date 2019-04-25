@@ -3,7 +3,7 @@
 #include <string.h>
 
 int compare( const void* a, const void* b) {
-  double _a = * ( (double*) a );
+  double double_a = * ( (double*) a );
   double double_b = * ( (double*) b );
 
   if ( double_a == double_b ) return 0;
@@ -12,17 +12,18 @@ int compare( const void* a, const void* b) {
 }
 
 void reps(double array[], double size){
+  printf("Before declarations\n");
   double reps = 0;
   double most = 0;
-  double arr[size];
+  double arr[(int) size];
   memcpy(arr, array, size * sizeof(double));
-      
+  printf("After memcpy\n");
   qsort( arr, size, sizeof(double), compare );
-  
-   for(double i = 0; i < size; i++) {
+  printf("After qsort\n");
+   for(int i = 0; i < size; i++) {
     double highest = 0;
     double numCount = 0;
-      for(double j = i+1; j < size; j++) {
+      for(int j = i+1; j < size; j++) {
         if(arr[i] == arr[j]) {
           numCount += 1;
           highest++;
