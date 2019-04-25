@@ -16,6 +16,7 @@
 #define GET_TIMER(X) (_timer_ ## X)
 #endif
 
+#define CATOUT
  
 /* always assuming int is at least 32 bits */
 int rand();
@@ -34,7 +35,9 @@ int main(int argc, char* argv[]) {
     int i;
 //    printf("rand max is %d\n", RAND_MAX);
 
+    #ifndef CATOUT
     FILE* output = fopen("out_lcg_par.txt", "w");
+    #endif
 
     int myRank = 0;
     rseed = atoi(argv[1]);
@@ -65,9 +68,15 @@ int main(int argc, char* argv[]) {
     STOP_TIMER(genvals);
 
     for (i = 0; i < size; i++) {
+        #ifdef CATOUT
+        printf("%d\n", vals[i]);
+        #else
         fprintf(output, "%d\n", vals[i]);
+        #endif
     }
+    #ifndef CATOUT
     printf("Time taken: %.6f\n", GET_TIMER(genvals));
     fclose(output);
+    #endif
     return 0;
 }
