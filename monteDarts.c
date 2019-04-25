@@ -11,11 +11,12 @@
 long total_darts = 0;           // dart count
 long darts_in_circle = 0;       // number of hits
 
-void throw_darts(long total_darts, long alg, char* fileName)
+void throw_darts(long total_darts, long alg, char* fileName, long cores)
 {
     unsigned long seed = 0;
-    unsigned long hits = 0; 
+    unsigned long hits = 0;
 
+    char* outputFN = malloc(sizeof(char)*100);
     FILE* input;
     FILE* output;
     unsigned long  mod = 100000000;
@@ -24,21 +25,24 @@ void throw_darts(long total_darts, long alg, char* fileName)
     switch(alg) {
         case 1:
             input = fopen(fileName, "r");
-            output = fopen("darts_lcg.txt", "w");
+            sprintf(outputFN, "results/dartResults/darts_lcg_%lu_%lu.txt", total_darts, cores);
+            output = fopen(outputFN, "w");
             break;
         case 2:
             input = fopen(fileName, "r");
-            output = fopen("darts_mid.txt", "w");
+            sprintf(outputFN, "results/dartResults/darts_mid_%lu_%lu.txt", total_darts, cores);
+            output = fopen(outputFN, "w");
             mod =    10000;
             divisor = 9999;
             break;
         case 3:
             input = fopen(fileName, "r");
-            output = fopen("darts_fry.txt", "w");
+            sprintf(outputFN, "results/dartResults/darts_fry_%lu_%lu.txt", total_darts, cores);
+            output = fopen(outputFN, "w");
             mod =    10000000000000;
             divisor = 9999999999999;
             break;
-        default: printf("Not an algorithm"); return;
+        default: printf("Not an algorithm\n"); return;
     }
 
     for (long dart = 0; dart < total_darts; dart++) {
@@ -76,6 +80,7 @@ void throw_darts(long total_darts, long alg, char* fileName)
         default: printf("How'd you get here???"); break;
     }
 
+    free(outputFN);
     fclose(input);
     fclose(output);
     return;
@@ -84,15 +89,17 @@ void throw_darts(long total_darts, long alg, char* fileName)
 int main(int argc, char* argv[])
 {
     // check and parse command-line arguments
-    if (argc != 4) {
-        printf("Usage: %s <num-darts> <PRNG-algorithm> <random-values-file>\n", argv[0]);
+    if (argc != 5) {
+        printf("Usage: %s <num-darts> <PRNG-algorithm> <random-values-file> <num-cores>\n", argv[0]);
         exit(EXIT_FAILURE);
     }
     total_darts = strtoll(argv[1], NULL, 10);
     long alg = strtol(argv[2], NULL, 10);
+    char* srcName = argv[3];
+    long cores = strtol(argv[4], NULL, 10);
 
     // simulate dart throws
-    throw_darts(total_darts, alg, argv[3]);
+    throw_darts(total_darts, alg, srcName, cores);
 
     return EXIT_SUCCESS;
 }
