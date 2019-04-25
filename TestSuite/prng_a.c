@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include "repetition.h"
 //Define the maximum number of values in the randomdata.values array
-#define MAXVALS 55000
+#define MAXVALS 100000
 //Define the number of buckets for the chisquared
 #define BUCKETCT 10
 //#define DEBUG
@@ -44,14 +44,18 @@ typedef struct {
 
 void* values_tostring(randomdata data, char* returnto){
     
-    char retval[500000] = "[ ";
-    char temp[500000] = "";
+    char *retval = malloc(sizeof(char) * MAXVALS * 64);
+    strcpy(retval, "[ ");
+    char *temp = malloc(sizeof(char) * MAXVALS * 64);
+    strcpy(temp, "");
     for(int i = 0; i < data.numvals; i++){ 
         sprintf(temp, "%.3f ", data.values[i]);
         strcat(retval, temp);
     }
     strcat(retval, "]");
     strcpy(returnto, retval);
+    free(retval);
+    free(temp);
 }
 
 void* report_analysis(randomdata data){
@@ -68,8 +72,7 @@ void chisquared(randomdata data, analysis results){
     // subtract expected from actual, square it, divide by expected
     // add up the resulting values
     //
-    // p value needs to be looked up on a table, unfortunately
-    // so, do we calcluate p value?
+    // p value needs to be looked up on a table
 
     //check for results to have been defined
 
@@ -84,8 +87,10 @@ void chisquared(randomdata data, analysis results){
     double range = (results.max - results.min);
     double bucketsize = range/BUCKETCT;
     double desiredspread = (data.numvals/BUCKETCT);
+    int bucket = 0;
     for(int i = 0; i < data.numvals; i++){
-        buckets[(int)((data.values[i] - results.min)/bucketsize)] += 1; 
+	bucket = floor( (data.values[i] - results.min)/bucketsize);
+        buckets[bucket] += 1; 
     }
 
 
@@ -139,10 +144,6 @@ void* spread(randomdata data, analysis* results){
 }
 
 
-//period identification function 
-void repeats(randomdata data){
-
-}
 
 //main
 
@@ -150,28 +151,6 @@ int main(int argc, char* argv[]){
     //for now, create a randomdata struct manually and send to spread and send to the functions
     
     randomdata testdata;
-    #ifdef DEBUG
-    randomdata data;
-
-    data.alg = LCG;
-    data.time = 4.555;
-    data.cores = 0;
-    data.numvals = 5;
-    data.values[0] = 123; 
-    data.values[1] = 234; 
-    data.values[2] =  345; 
-    data.values[3] =  456; 
-    data.values[4] =  567; 
-     
-    char arrayvals[500];
-    values_tostring(data, arrayvals);
-    analysis data_a;
-    spread(data, &data_a);
-
-    printf("Values of this array: %s\n", arrayvals);
-    printf("Standard Deviation of the test struct is %f\n", data_a.std_deviation);
-    //in the future, parse in data and send it out to these functions to get values back
-    #endif    
 
     if(argc < 2){
         printf("ERROR: Please provide an infile.\n");
@@ -191,9 +170,9 @@ int main(int argc, char* argv[]){
     }
     fclose(datafile);
     analysis testdata_a; 
-    char newvals[50000];
-
-    values_tostring(testdata, newvals);
+    
+    char *newvals = malloc(sizeof(char) * MAXVALS * 64);
+    values_tostring(testdata, newvals); 
     spread(testdata, &testdata_a);
     
     printf("\n");
@@ -212,6 +191,5 @@ int main(int argc, char* argv[]){
     printf("Standard Deviation is %.2f percent of range\n", tempSD);
     printf("The minimum value is %.2f standard deviations away from the mean\n", ((testdata_a.mean - testdata_a.min)/testdata_a.std_deviation));
     printf("The maximum value is %.2f standard deviations away from the mean\n", ((testdata_a.max - testdata_a.mean)/testdata_a.std_deviation));
-
-
+    free(newvals);
 }
