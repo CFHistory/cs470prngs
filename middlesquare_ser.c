@@ -66,9 +66,6 @@ int seedlen = 0;  //public length of the seed
 //comment out this to prevent debug output
 //#define DEBUG
 
-//comment this out to prevent results output
-//#define RESULTSOUT
-
 //uncomment this to use concatenation to a file
 #define CATOUT
 
@@ -140,17 +137,6 @@ int main(int argc, char* argv[]){
     }
     STOP_TIMER(genvals);
 
-    //Report final answer as a string 
-    #ifdef RESULTSOUT
-    FILE* output = fopen("out_mid_ser.txt", "w");
-    printf("Final results: [ ");
-    for(int i = 0; i < iterations; i++){
-        printf("%u ", results[i]);
-        fprintf(output, "%d\n", results[i]);
-    }
-    printf("]\n");
-    fclose(output);
-    #endif
     #ifdef CATOUT
     for(int j = 0; j < iterations; j++){
         printf("%u\n", results[j]);
