@@ -93,13 +93,18 @@ int main(int argc, char* argv[]) {
     #endif
 
     
-    #ifdef CATOUT
+    #ifndef CATOUT
     FILE* output = fopen("out_fry_par.txt", "w");
+    #endif
     for(int k = 0; k < count; k++){
+        #ifdef CATOUT
+        printf("%lu\n", results[k]);
+        #else
         fprintf(output, "%lu\n", results[k]);
+        #endif
     }
+    #ifndef CATOUT
     fclose(output);
-    #else 
     printf("Time taken: %.6f\n", GET_TIMER(genvals));
     #endif
 
