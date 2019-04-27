@@ -1,6 +1,9 @@
 # cs470prngs
 Repository for group project for CS 470 of Spring 2019
 
+URL FOR THE REPOSITORY:
+https://github.com/CFHistory/cs470prngs.git
+
 LIST OF FILES
 	EarlySemester - this folder contains all of the files from deliverables throughout the semester
 		Monte Carlo Simulation Writeup.docx - our formal project proposal
