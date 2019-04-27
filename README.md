@@ -2,9 +2,27 @@
 Repository for group project for CS 470 of Spring 2019
 
 LIST OF FILES
+	EarlySemester - this folder contains all of the files from deliverables throughout the semester
+		Monte Carlo Simulation Writeup.docx - our formal project proposal
+		PRNG_PosterRoughDraft.pptx- our final poster
+		discussion.pdf - Our initial idea proposal
+		survey.txt - a mid-project survey
 	TestSuite- this folder contains all of the files needed to test the output of a PRNG algorithm
+		Makefile- this makefile handles creating the prng_a executable
+		prng_a.c - this is the c file for our testing executable, which runs a comprehensive test on a text file containing values that it is provided. See RUNNING OUR TEST SUITE below for specific directions.
+		repetition.c - this is the c file for the repetition test functionality
+		repetition.h - this is the header file for the repetition test funcitonality
 	ThreeFry- this folder contains all of the files needed to run the threefry PRNG algorithm
+		features - this folder contains dependencies for Threefry, which were provided from the random123 repository referred to in our works cited.
+		Makefile - this makefile creates our threefry_par and threefry_ser executables
+		ThreeFry Basic Use- provided by random123, details how to use threefry
+		array.h - a header file from random123 that facilitates threefry
+		threefry.h - a header file from random123 that facilitates threefry
+		threefry_par.c - the c file for the threefry parallel implementation
+		threefry_ser.c - the c file for the threefry serial implementation
 	results- this folder is where all the results from running generatevalues.sh and runtests.sh are placed
+		dartresults- this folder contains specific results for the monteDarts program
+		There are a large number of value and result file in this folder, the syntax of these files is detailed later in the GENERATING VALUES section. We have provided an example testing suite as an example of how our testing suite works, but it is recommended to generate a fresh set of values. 
 	Makefile- this Makefile handles making lcg, middlesquare, monteStock and monteDarts
 	README.md- this file!
 	dartsLAb.c- the original darts Lab file which our Darts Monte Carlo file was based on
