@@ -1,4 +1,4 @@
-# cs470prngs
+# cs470prngs FINAL VERSION
 Repository for group project for CS 470 of Spring 2019
 
 URL FOR THE REPOSITORY:
