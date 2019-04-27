@@ -1,5 +1,26 @@
 # cs470prngs
 Repository for group project for CS 470 of Spring 2019
+
+LIST OF FILES
+	TestSuite- this folder contains all of the files needed to test the output of a PRNG algorithm
+	ThreeFry- this folder contains all of the files needed to run the threefry PRNG algorithm
+	results- this folder is where all the results from running generatevalues.sh and runtests.sh are placed
+	Makefile- this Makefile handles making lcg, middlesquare, monteStock and monteDarts
+	README.md- this file!
+	dartsLAb.c- the original darts Lab file which our Darts Monte Carlo file was based on
+	generatevalues.sh- this bash script makes all the algorithms in the directory and generates values using each. See the GENERATING VALUES section for how to use this
+	lcg.c - the basic version of the lcg algorithm. not used
+	lcg_par.c- the parallel version of LCG
+	lcg_ser.c the serial version of LCG that is used for testing
+	makeclean.sh - this bash script runs make clean on all files in this project, as well as removing all files from the results directory
+	middlesquare_par.c - the parallel version of middlesquare
+	middlesquare_ser.c - the serial version of middlesquare
+	monteCarloStock.c - the Monte Carlo simulation for stock prices. 
+	monteDarts.c - the Monte Carlo simulation for using darts to calculate pi.
+	results.ods - a spreadsheet containing three sheets, with the results of running our testing suite detailed for each algorithm we're using
+	runtests.sh - a bash script to run our testing executable on every results file in our results directory
+	
+
 IMPORTANT
 	Before running any tests, it is highly recommended that you run ./makeclean.sh in the main directory to clear out old result sets and past unneeded executables. 
 
